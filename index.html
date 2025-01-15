@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AI-powered English Learning Assistant - Improve your pronunciation, grammar, conversation, and vocabulary skills">
+    <meta name="keywords"
+        content="English learning, AI tutor, pronunciation, grammar, conversation practice, vocabulary builder">
+    <meta name="author" content="Your Company Name">
+    <meta property="og:title" content="English Learning Assistant">
+    <meta property="og:description" content="Master English with our AI-powered learning assistant">
+    <meta property="og:image" content="/images/og-image.png">
+    <meta property="og:url" content="https://ai-english-learning-assistant.vercel.app">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <title>English Learning Assistant | AI-Powered Language Learning</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- CSS links -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <nav class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <img src="/logo.png" alt="ELA Logo" class="h-20 w-auto">
+                    <div class="text-xl font-bold text-gray-800">
+                        English Learning Assistant
+                        <span class="text-sm font-normal text-gray-500 block">Powered by AI</span>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#" class="nav-link active">Dashboard</a>
+                    <a href="#" class="nav-link">My Progress</a>
+                    <a href="#" class="nav-link">Resources</a>
+                    <a href="#" class="nav-link">Help</a>
+                </div>
+
+                <!-- User Menu -->
+                <div class="flex items-center space-x-4">
+                    <button class="notification-btn relative">
+                        <i class="fas fa-bell text-gray-600"></i>
+                        <span class="notification-badge"></span>
+                    </button>
+                    <div class="user-profile flex items-center space-x-2">
+                        <img src="/user.png" alt="User Avatar" class="h-8 w-8 rounded-full">
+                        <span class="hidden md:inline text-sm font-medium text-gray-700">Dan Vu</span>
+                        <i class="fas fa-chevron-down text-xs text-gray-400"></i>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden mobile-menu-button">
+                    <i class="fas fa-bars text-gray-600"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div class="mobile-menu hidden md:hidden mt-4">
+                <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-50">Dashboard</a>
+                <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-50">My Progress</a>
+                <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-50">Resources</a>
+                <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-50">Help</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto p-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h1 class="text-2xl font-bold mb-4">English Learning Assistant</h1>
+
+
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700">Voice</label>
+                    <select id="voiceSelect" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                        <option value="alloy">Alloy</option>
+                        <option value="ash">Ash</option>
+                        <option value="ballad">Ballad</option>
+                        <option value="coral">Coral</option>
+                        <option value="echo">Echo</option>
+                        <option value="sage">Sage</option>
+                        <option value="shimmer">Shimmer</option>
+                        <option value="verse">Verse</option>
+                    </select>
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700">Difficulty Level</label>
+                    <select id="difficultyLevel" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+
+
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <button id="pronunciationBtn"
+                        class="mode-btn bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 flex items-center justify-center">
+                        <i class="fas fa-microphone-alt mr-2"></i>Pronunciation
+                    </button>
+                    <button id="grammarBtn"
+                        class="mode-btn bg-green-500 text-white p-2 rounded-md hover:bg-green-600 flex items-center justify-center">
+                        <i class="fas fa-book mr-2"></i>Grammar
+                    </button>
+                    <button id="conversationBtn"
+                        class="mode-btn bg-purple-500 text-white p-2 rounded-md hover:bg-purple-600 flex items-center justify-center">
+                        <i class="fas fa-comments mr-2"></i>Conversation
+                    </button>
+                    <button id="vocabularyBtn"
+                        class="mode-btn bg-yellow-500 text-white p-2 rounded-md hover:bg-yellow-600 flex items-center justify-center">
+                        <i class="fas fa-book-open mr-2"></i>Vocabulary
+                    </button>
+                </div>
+
+                <!-- Control Buttons -->
+                <div class="flex gap-4 mb-6">
+                    <button id="startBtn"
+                        class="primary-btn bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 disabled:opacity-50 flex items-center justify-center flex-1">
+                        <i class="fas fa-play mr-2"></i>Start
+                    </button>
+                    <button id="stopBtn"
+                        class="danger-btn bg-red-500 text-white p-2 rounded-md hover:bg-red-600 disabled:opacity-50 flex items-center justify-center flex-1">
+                        <i class="fas fa-stop mr-2"></i>Stop
+                    </button>
+                    <button id="exportBtn"
+                        class="hidden secondary-btn bg-gray-500 text-white p-2 rounded-md hover:bg-gray-600 flex items-center justify-center flex-1">
+                        <i class="fas fa-download mr-2"></i>Export
+                    </button>
+                </div>
+
+
+                <div class="wave-container bg-gray-50 rounded-lg p-4 mb-6 border border-gray-200">
+                    <div class="text-sm text-gray-500 mb-2 text-center">Audio Visualization</div>
+                    <div id="audioWave" class="flex items-center justify-center gap-1">
+                        <div class="wave-bar idle"></div>
+                        <div class="wave-bar idle"></div>
+                        <div class="wave-bar idle"></div>
+                        <div class="wave-bar idle"></div>
+                        <div class="wave-bar idle"></div>
+                        <div class="wave-bar idle"></div>
+                        <div class="wave-bar idle"></div>
+                        <div class="wave-bar idle"></div>
+                        <div class="wave-bar idle"></div>
+                        <div class="wave-bar idle"></div>
+                        <div class="wave-bar idle"></div>
+                        <div class="wave-bar idle"></div>
+                        <div class="wave-bar idle"></div>
+                        <div class="wave-bar idle"></div>
+                        <div class="wave-bar idle"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="grid grid-rows-2 gap-6 h-full">
+
+                    <div class="conversation-container">
+                        <div class="conversation-header">
+                            <div class="flex items-center justify-between mb-3">
+                                <h3 class="text-lg font-semibold text-gray-800">Current Session</h3>
+                                <div class="session-info flex items-center">
+                                    <span class="recording-indicator"></span>
+                                    <span class="text-sm text-gray-500 ml-2">Session Active</span>
+                                </div>
+                            </div>
+                            <div
+                                class="current-mode-display flex items-center justify-between p-3 rounded-lg bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100">
+                                <div class="mode-info flex items-center">
+                                    <div class="mode-icon-wrapper mr-3">
+
+                                    </div>
+                                    <div class="mode-details">
+                                        <h4 class="font-medium text-gray-800"></h4>
+                                        <p class="text-sm text-gray-600"></p>
+                                    </div>
+                                </div>
+                                <div class="difficulty-badge"></div>
+                            </div>
+                        </div>
+                        <div id="conversationHistory" class="conversation-messages mt-4"></div>
+                    </div>
+
+
+                    <div class="transcription-container">
+                        <div class="transcription-header mb-3">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-semibold text-gray-800">Live Transcription</h3>
+                                <div class="flex items-center">
+                                    <span class="text-sm text-gray-500">
+                                        <i class="fas fa-keyboard mr-2"></i>Real-time Feed
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="transcriptionBox"
+                            class="transcription-content overflow-y-auto p-4 bg-gray-50 rounded-lg border border-gray-200">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="space-y-4">
+                    <img src="/logo.png" alt="ELA Logo" class="h-16 w-auto">
+                    <p class="text-sm">Empowering language learners worldwide with AI-powered education technology.</p>
+                    <div class="flex space-x-4">
+                        <!-- <a href="#" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a> -->
+                        <a href="https://www.linkedin.com/in/danducvu/" class="social-link" target="_blank"><i
+                                class="fab fa-linkedin"></i></a>
+                        <a href="https://www.facebook.com/vuducdantn" class="social-link" target="_blank"><i
+                                class="fab fa-facebook"></i></a>
+                        <a href="https://github.com/danvufs" class="social-link" target="_blank"><i
+                                class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="footer-link">About Us</a></li>
+                        <li><a href="#" class="footer-link">Features</a></li>
+                        <li><a href="#" class="footer-link">Pricing</a></li>
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="footer-link">Help Center</a></li>
+                        <li><a href="#" class="footer-link">Community</a></li>
+                        <li><a href="#" class="footer-link">Contact Us</a></li>
+                        <li><a href="#" class="footer-link">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Stay Updated</h4>
+                    <form class="space-y-4">
+                        <div>
+                            <input type="email" placeholder="Enter your email"
+                                class="w-full px-4 py-2 rounded bg-gray-700 border border-gray-600 focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <button type="submit"
+                            class="w-full px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Bottom Footer -->
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm">&copy; 2025 English Learning Assistant. All rights reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="text-sm hover:text-white">Privacy Policy</a>
+                    <a href="#" class="text-sm hover:text-white">Terms of Service</a>
+                    <a href="#" class="text-sm hover:text-white">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Existing JS links -->
+    <script type="module" src="/src/main.js"></script>
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+</body>
+
+</html>
